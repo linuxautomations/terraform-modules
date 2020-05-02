@@ -17,6 +17,7 @@ resource "aws_eks_node_group" "example" {
   }
 
   depends_on = [
-    aws_iam_role_policy_attachment.admin-access
+    aws_iam_role_policy_attachment.admin-access,
+    aws_iam_role_policy_attachment.node-worker-policy
   ]
 }

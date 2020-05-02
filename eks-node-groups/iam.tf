@@ -50,3 +50,7 @@ resource "aws_iam_role_policy_attachment" "admin-access" {
   role       = aws_iam_role.node-group-role.name
 }
 
+resource "aws_iam_role_policy_attachment" "node-worker-policy" {
+  policy_arn = "arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy"
+  role       = aws_iam_role.node-group-role.name
+}
