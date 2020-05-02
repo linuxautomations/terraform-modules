@@ -1,6 +1,6 @@
 resource "aws_eks_cluster" "cluster" {
   name          = local.EKS_NAME
-  role_arn      = aws_iam_role.eks-role.name
+  role_arn      = aws_iam_role.eks-role.arn
 
   vpc_config {
     subnet_ids  = local.PUBLIC_SUBNETS
