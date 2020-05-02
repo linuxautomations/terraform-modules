@@ -18,6 +18,8 @@ resource "aws_eks_node_group" "example" {
 
   depends_on = [
     aws_iam_role_policy_attachment.admin-access,
-    aws_iam_role_policy_attachment.node-worker-policy
+    aws_iam_role_policy_attachment.AmazonEC2ContainerRegistryReadOnly,
+    aws_iam_role_policy_attachment.AmazonEKS_CNI_Policy,
+    aws_iam_role_policy_attachment.AmazonEKSWorkerNodePolicy
   ]
 }
