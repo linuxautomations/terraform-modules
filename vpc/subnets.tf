@@ -15,3 +15,4 @@ resource "aws_subnet" "public" {
     Name        = "${local.subnet_prefix}-public-${count.index+1}"
   }
 }
+q
