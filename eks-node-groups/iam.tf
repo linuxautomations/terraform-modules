@@ -31,7 +31,7 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEKSServicePolicy" {
 // Need to change this as per policy needs.
 
 resource "aws_iam_role" "node-group-role" {
-  name = "role-for-${local.EKS_NAME}"
+  name = "role-for-${local.NODEGROUP_NAME}"
 
   assume_role_policy = jsonencode({
     Statement = [{
