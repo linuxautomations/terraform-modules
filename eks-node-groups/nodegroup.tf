@@ -3,7 +3,7 @@ resource "aws_eks_node_group" "example" {
   node_group_name = local.NODEGROUP_NAME
   node_role_arn   = aws_iam_role.node-group-role.arn
   subnet_ids      = local.PUBLIC_SUBNETS
-  instance_types  = var.INSTANCE_TYPE
+  instance_types  = [var.INSTANCE_TYPE]
 
   remote_access  {
     ec2_ssh_key   = var.KEYPAIR_NAME
