@@ -1,7 +1,3 @@
-// For testing purpose creation IAM with Admin Access
-// Need to change this as per policy needs.
-
-
 resource "aws_iam_role" "eks-role" {
   name = "role-for-${local.EKS_NAME}"
 
@@ -30,3 +26,27 @@ resource "aws_iam_role_policy_attachment" "example-AmazonEKSServicePolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSServicePolicy"
   role       = aws_iam_role.eks-role.name
 }
+
+// For testing purpose creation IAM with Admin Access
+// Need to change this as per policy needs.
+
+resource "aws_iam_role" "node-group-role" {
+  name = "role-for-${local.EKS_NAME}"
+
+  assume_role_policy = jsonencode({
+    Statement = [{
+      Action = "sts:AssumeRole"
+      Effect = "Allow"
+      Principal = {
+        Service = "ec2.amazonaws.com"
+      }
+    }]
+    Version = "2012-10-17"
+  })
+}
+
+resource "aws_iam_role_policy_attachment" "admin-access" {
+  policy_arn = "arn:aws:iam::aws:policy/AdministratorAccess"
+  role       = aws_iam_role.node-group-role.name
+}
+
