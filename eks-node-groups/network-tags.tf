@@ -1,5 +1,5 @@
 resource "null_resource" "network" {
-  triggers {
+  triggers = {
     build = timestamp()
   }
   provisioner "local-exec" {
